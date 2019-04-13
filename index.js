@@ -53,7 +53,7 @@ class Meal {
     return store.deliveries.filter(delivery => delivery.mealId === this.id);
   }
   customers() {
-  return this.deliveries().map(delivery => delivery.customer() );
+    return this.deliveries().map(delivery => delivery.customer() );
   }
   static byPrice() {
     return store.meals.sort((a,b) => b.price - a.price)
