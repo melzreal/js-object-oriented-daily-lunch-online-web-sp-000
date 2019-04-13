@@ -38,9 +38,7 @@ class Customer {
     return this.deliveries().map(delivery => delivery.meal());
   }
   totalSpent() {
-    let total = 0;
-    this.meals().forEach(meal => total += meal.price);
-    return total;
+    return this.meals().reduce((total,meal) => total += meal.price, 0);
   }
 }
 
@@ -52,9 +50,7 @@ class Meal {
     store.meals.push(this);
   }
   deliveries() {
-    return store.deliveries.filter(delivery => {
-      return delivery.mealId === this.id;
-    })
+    return store.deliveries.filter(delivery => delivery.mealId === this.id);
   }
   customers() {
   return this.deliveries().map(delivery => delivery.customer() );
